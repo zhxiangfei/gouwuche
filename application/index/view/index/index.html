@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<h3>我的购物车</h3>
+<form action="/index/index/index" method="post">
+	
+	<input type="text" name="ids">
+	<input type="submit" value="获取部分商品信息">
+	<span style="color: gray; font-size: 14px;">用英文逗号隔开</span>
+</form>
+所选商品数量：{$totalnum}
+<br><br>
+
+<form action="/index/index/emptyCart">
+	<input type="submit" value="清空购物车">
+</form>
+<br>
+
+<table border="1">
+	<tr align="center">
+		<td style="width: 100px">商品ID</td>
+		<td style="width: 100px">商品属性ID</td>
+		<td style="width: 100px">商品名</td>
+		<td style="width: 100px">商品属性名称</td>
+		<td style="width: 100px">数量</td>
+		<td style="width: 100px">单价</td>
+		<td style="width: 100px">运费</td>
+		<td style="width: 100px">总价</td>
+		<td style="width: 100px">操作</td>
+	</tr>
+	{volist name="list" id="vo"}
+	<tr align="center">
+		<td style="width: 100px">{$vo.goods_id}</td>
+		<td style="width: 100px">{$vo.attr_id}</td>
+		<td style="width: 100px">{$vo.goods_name}</td>
+		<td style="width: 100px">{$vo.attr_name}</td>
+		<td style="width: 100px">{$vo.goods_number}</td>
+		<td style="width: 100px">{$vo.price}</td>
+		<td style="width: 100px">{$vo.freight}</td>
+		<td style="width: 100px">{$vo.subtotal}</td>
+		<td style="width: 100px"><a href="/index/index/del.html?id={$vo.goods_id}">删除</a></td>
+	</tr>
+	{/volist}
+</table>
+
+<br/>
+<hr/>
+
+
+<h3>添加购物车</h3>
+
+<form action="/index/index/addbasket" method="post">
+	
+	商品ID：<input type="text" name="goods_id" value="111">
+	商品属性ID：<input type="text" name="attr_id" value="222">
+	商品名：<input type="text" name="goods_name" value="U盘">
+	商品属性名称：<input type="text" name="attr_name" value="数码类">
+	<br/><br/>
+	数 &nbsp; &nbsp;量：<input type="text" name="number" value="1">
+	单 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;价：<input type="text" name="price" value="12">
+	运 &nbsp; 费：<input type="text" name="freight" value="10">
+
+	<input type="submit" value="添加购物车">
+</form>
+
+<br/>
+<hr/>
+
+<h3>某一商品减一</h3>
+<form action="/index/index/reduce" method="post">
+	商品ID：<input type="text" name="id"> 
+	商品属性ID：<input type="text" name="attr_id"> 
+	减去数量：<input type="text" name="number"> 
+	<input type="submit" value="减一">
+</form>
+<br/>
+<hr/>
+
+<h3>编辑商品</h3>
+<form action="/index/index/edit" method="post">
+	商品ID：<input type="text" name="id"> 
+	商品属性ID：<input type="text" name="attr_id"> 
+	修改数量：<input type="text" name="number"> 
+	<input type="submit" value="修改">
+</form>
+<br/>
+<hr/>
+
+</body>
+</html>
